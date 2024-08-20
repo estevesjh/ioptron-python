@@ -10,6 +10,7 @@ import configparser
 from dataclasses import dataclass, field
 import logging
 import time
+import os
 from serial.serialutil import SerialException
 from ioptron import iotty
 from ioptron import utils
@@ -165,6 +166,7 @@ class Hemisphere:
 class ioptron:
     """A class to interact with iOptron mounts using Python."""
     def __init__(self):
+        self.global_dir = utils.get_global_dir_path()
         config = self._parse_config()
         if config['port'] != '':
             self.scope = iotty.iotty(port=config['port'], baud=config['baud'], log_level = config['log_level'])
@@ -660,7 +662,7 @@ class ioptron:
         """PRIVATE method to parse the config file. Retruns a data structure
         of config information."""
         config= configparser.ConfigParser()
-        config.read('config.ini')
+        config.read(os.path.join(self.global_dir, 'config.ini'))
         config_details = {}
         config_details['port'] = config['DEFAULT']['SerialPort']
         config_details['baud'] = int(config['DEFAULT']['SerialSpeed'])
