@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from decimal import Decimal
 import time
 import yaml
+import os
 
 def convert_arc_seconds_to_degrees(seconds):
     """Convert arc seconds with 0.01 percision to degrees"""
@@ -84,3 +85,9 @@ def parse_mount_config_file(file, model):
     with open(file) as open_file:
         yaml_data = yaml.load(open_file, Loader=yaml.FullLoader)
     return yaml_data[model]
+
+
+def get_global_dir_path():
+    """Get the global directory path for ioptron module"""
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(current_dir, '..')
