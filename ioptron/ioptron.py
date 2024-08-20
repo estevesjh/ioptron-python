@@ -7,7 +7,7 @@ James Malone, 2021
 
 # Imports
 import configparser
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import logging
 import time
 from serial.serialutil import SerialException
@@ -130,8 +130,8 @@ class MovingSpeed:
 class Parking:
     """Contains information and location of parking."""
     is_parked: bool = None
-    altitude: Altitude = Altitude()
-    azimuth: Azimuth = Azimuth()
+    altitude: Altitude = field(default_factory=Altitude)
+    azimuth: Azimuth = field(default_factory=Azimuth)
 
 @dataclass
 class Pec:
