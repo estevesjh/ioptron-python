@@ -1,3 +1,32 @@
+"0010":
+  description: "SkyHunter (both EQ and AA mode)"
+  supported_models:
+    - SkyHunter 
+  tracking_speeds:
+    1: 1
+    2: 2
+    3: 8
+    4: 16
+    5: 64
+    6: 128
+    7: 256
+    8: 512
+    9: 900
+  tracking_rates:
+    0: sidereal
+    1: lunar
+    2: solar
+    3: king
+    4: custom
+  counterweight_direction:
+    0: up
+    1: normal
+  capabilities:
+    encoders: False
+    pec: False
+    mechanical_zero: True
+  type: aa 
+
 "0070":
   description: "CEM70G, and CEM-70"
   supported_models:
